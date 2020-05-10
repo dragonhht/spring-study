@@ -1,0 +1,7 @@
+# mongodb配置
+spring:
+  data:
+    mongodb:
+      database: spring
+      host: deepin.carloshuang.com
+      port: 27017

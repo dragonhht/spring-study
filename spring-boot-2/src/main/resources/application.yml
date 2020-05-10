@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    include: mongo
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://deepin.carloshuang.com:3306/studytest
+    username: root
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+

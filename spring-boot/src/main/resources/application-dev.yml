@@ -1,0 +1,11 @@
+server:
+  port: 80
+  context-path: /test
+
+userName1: dragon
+age: 18
+text: "name: ${userName1} , age: ${age}"
+
+user:
+  name1: dragon
+  age: 18

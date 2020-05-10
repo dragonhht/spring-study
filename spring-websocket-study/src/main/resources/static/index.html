@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+</head>
+<body>
+<script>
+var client = null;
+
+/**
+ * 连接
+ */
+function connect() {
+    var socket = new SockJS('/user-hello')
+    client = Stomp.over(socket)
+    client.connect({}, function (data) {
+        // 订阅到指定的广播
+        client.subscribe('/topic/hello', function (data) {
+            console.log(data)
+        })
+    })
+}
+
+/**
+ * 发送数据
+ * @param id 用户id
+ */
+function sendMsg(id) {
+    client.send('/ws/hello', {}, JSON.stringify({'name': 'dragonhht'}))
+}
+</script>
+</body>
+</html>
