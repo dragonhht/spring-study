@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: config      # 对应配置文件的{application}部分
+  cloud:
+    config:
+      profile: one    # 对应配置文件{profile}部分
+      label: master   # 对应git分支
+      uri: http://localhost:9998/    # 配置中心的地址

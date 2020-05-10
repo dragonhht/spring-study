@@ -1,0 +1,11 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: consumer-using-ribbon
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8080/eureka/   # 指定服务注册中心的位置。
+

@@ -1,0 +1,26 @@
+server:
+  port: 9998
+
+spring:
+  application:
+    name: config-server
+
+  # 使用本地配置
+#  profiles:
+#      active: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          searchLocations:  /home/huang/Work_Space/Idea_Space/spring-cloud-study2/cloud-study-config-server/config-pero
+
+
+  # git管理配置
+  profiles:
+      active: git # spring cloud默认为从git获取
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/dragonhht/spring-cloud-study2   # 配置git仓库位置
+          search-paths: cloud-study-config-server/config-pero     # 配置仓库路径下的相对搜索位置，可以配置多个

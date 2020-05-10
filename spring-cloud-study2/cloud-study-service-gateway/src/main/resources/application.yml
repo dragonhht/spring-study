@@ -1,0 +1,32 @@
+server:
+  port: 9990
+
+spring:
+  application:
+    name: api-gateway
+
+# 配置路由
+
+# 通过url直接映射
+#zuul:
+#  routes:
+#    api-a-url:
+#      path: /api-service1/**
+#      url:  http://localhost:8081
+#    api-b-url:
+#      path: /api-service2/**
+#      url:  http://localhost:8082
+
+# 将Zuul注册到eureka server上,从而去发现其他服务
+zuul:
+  routes:
+    api-a-url:
+      path: /api-service1/**
+      serviceId:  provider-service1
+    api-b-url:
+      path: /api-service2/**
+      serviceId:  provider-service2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:  http://localhost:8080/eureka/   # 指定服务注册中心的位置。

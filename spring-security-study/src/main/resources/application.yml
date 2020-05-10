@@ -1,0 +1,49 @@
+server:
+  port: 8081
+  servlet:
+    session:
+      timeout: 60
+  # 配置https
+  ssl:
+    key-store: server.keystore
+    key-store-password: 123456
+    key-alias: tomcat
+    enabled: true
+    key-store-type: JKS
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my.dragon.com:3307/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  # 配置security的默认账号信息
+  security:
+    user:
+      name: dragonhht
+      password: 123
+
+# CAS
+cas:
+  server:
+    # CAS Server主路径
+    prefix: https://cas.dragon.com:8443/cas
+    # CAS Server登录URL
+    login: ${cas.server.prefix}/login
+    # CAS Server注销URL
+    logout: ${cas.server.prefix}/logout
+  client:
+    prefix: https://client.cas.dragon.com:8081
+    # CAS Client登录URL
+    login: ${cas.client.prefix}/login/cas
+    # CAS Client注销URL
+    logout:
+      url: ${cas.client.prefix}${cas.client.logout.relative}
+      relative: /logout/cas
+
+  user:
+    inmemory: casuser

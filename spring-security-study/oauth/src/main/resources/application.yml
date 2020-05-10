@@ -1,0 +1,8 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: github提供的clientId
+            client-secret: github提供的Client Secret
